@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
 	T.get('statuses/user_timeline', params, function(error, tweets, response) {
 		if (!error) {
 			res.json(tweets);
