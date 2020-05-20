@@ -6,7 +6,7 @@ var app = express();
 
 var params = {
 	screen_name: 'Stocktwits',
-	count: 12,
+	count: 30,
 	lang: 'en'
 };
 
