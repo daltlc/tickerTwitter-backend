@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.get('/twiter', (req, res) => {
+app.get('/twitter', (req, res) => {
 	T.get('statuses/user_timeline', params, function(error, tweets, response) {
 		if (!error) {
 			res.json(tweets);
