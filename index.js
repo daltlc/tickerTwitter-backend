@@ -34,7 +34,7 @@ app.get('/stocktwits', (req, res) => {
 	axios
 		.get(stocktwitsAPI)
 		.then(function(response) {
-			res.send(response.json);
+			res.send(response.data.messages);
 			console.log(response.data.messages);
 		})
 		.catch(function(error) {
