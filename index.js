@@ -10,7 +10,7 @@ var params = {
 	lang: 'en'
 };
 
-var stocktwitsAPI = 'https://api.stocktwits.com/api/2/streams/';
+var stocktwitsAPI = 'https://api.stocktwits.com/api/2/streams/amzn';
 
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
