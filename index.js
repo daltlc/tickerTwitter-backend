@@ -3,6 +3,7 @@ var config = require('./config.js');
 var T = new Twitter(config);
 var express = require('express');
 var app = express();
+var axios = require('axios');
 
 var params = {
 	screen_name: 'Stocktwits',
