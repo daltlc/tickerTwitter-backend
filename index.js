@@ -10,7 +10,7 @@ var params = {
 	lang: 'en'
 };
 
-var stocktwitsAPI = 'https://api.stocktwits.com/api/2/streams/amzn.json?';
+var stocktwitsAPI = 'https://api.stocktwits.com/api/2/streams/';
 
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
@@ -29,9 +29,15 @@ app.get('/twitter', (req, res) => {
 
 app.get('/stocktwits'),
 	(req, res) => {
-		axios.get(stocktwitsAPI).then(function(response) {
-			console.log(response);
-		});
+		axios
+			.get(stocktwitsAPI)
+			.then(function(response) {
+				console.log(response);
+				res.json(response);
+			})
+			.catch(function(error) {
+				console.log(error);
+			});
 	};
 
 app.listen(process.env.PORT || 8080);
