@@ -13,7 +13,7 @@ var params = {
 	lang: 'en'
 };
 
-var stocktwitsAPI = 'http://api.stocktwits.com/api/2/streams/symbol/amzn.json?';
+var stocktwitsAPI = 'http://api.stocktwits.com/api/2/streams/symbol/';
 
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
