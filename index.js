@@ -5,13 +5,15 @@ var express = require('express');
 var app = express();
 var axios = require('axios');
 
+var st = require('stocktwits');
+
 var params = {
 	screen_name: 'Stocktwits',
 	count: 30,
 	lang: 'en'
 };
 
-var stocktwitsAPI = 'https://api.stocktwits.com/api/2/streams/amzn';
+var stocktwitsAPI = 'http://api.stocktwits.com/api/2/streams/symbol/amzn.json?';
 
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
@@ -28,18 +30,26 @@ app.get('/twitter', (req, res) => {
 	});
 });
 
-app.get('/stocktwits'),
-	(req, res) => {
-		axios
-			.get(stocktwitsAPI)
-			.then(function(response) {
-				console.log(response);
-				res.json(response);
-			})
-			.catch(function(error) {
-				console.log(error);
-			});
-	};
+app.get('/stocktwits', (req, res) => {
+	axios
+		.get(stocktwitsAPI)
+		.then(function(response) {
+			res.send(response.json);
+			console.log(response.data.messages);
+		})
+		.catch(function(error) {
+			console.log(error);
+		});
+
+	// st.get('streams/user/StockTwits', function(err, response) {
+	// 	console.log(response.body);
+	// 	if (!err) {
+	// 		res.json(response.body);
+	// 	} else {
+	// 		console.log(err);
+	// 	}
+	// });
+});
 
 app.listen(process.env.PORT || 8080);
 console.log('Server started on PORT: 8080');
