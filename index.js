@@ -10,6 +10,8 @@ var params = {
 	lang: 'en'
 };
 
+var stocktwitsAPI = 'https://api.stocktwits.com/api/2/streams/amzn.json?';
+
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
 	next();
@@ -24,6 +26,13 @@ app.get('/twitter', (req, res) => {
 		}
 	});
 });
+
+app.get('/stocktwits'),
+	(req, res) => {
+		axios.get(stocktwitsAPI).then(function(response) {
+			console.log(response);
+		});
+	};
 
 app.listen(process.env.PORT || 8080);
 console.log('Server started on PORT: 8080');
